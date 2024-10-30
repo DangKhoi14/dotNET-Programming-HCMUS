@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Globalization;
+using System.Collections.Generic;
 using AttributeData;
 using System.Runtime.InteropServices;
+using System.Threading;
+
+delegate void MilkActionDelegate();
 
 namespace MilkManagement
 {
@@ -12,16 +16,15 @@ namespace MilkManagement
         [DllImport("User32.dll", CharSet = CharSet.Auto)]
         public static extern int MessageBox(int hWnd, string text, string caption, int options);
 
+        static List<Milk> milkList = new List<Milk>
+        {
+            new Milk("Dairy Pure", "01/10/2023", "01/04/2024", 100),
+            new Milk("Organic Valley", "15/08/2023", "15/02/2024", 150),
+            new Milk("Horizon Organic", "05/09/2023", "05/03/2024", 120)
+        };
+
         static void Main(string[] args)
         {
-            // List to hold Milk objects
-            var milkList = new List<Milk>
-            {
-                new Milk("Dairy Pure", "01/10/2023", "01/04/2024", 100),
-                new Milk("Organic Valley", "15/08/2023", "15/02/2024", 150),
-                new Milk("Horizon Organic", "05/09/2023", "05/03/2024", 120)
-            };
-
             bool isRunning = true;
 
             while (isRunning)
@@ -41,9 +44,9 @@ namespace MilkManagement
                 switch (choice)
                 {
                     case "1":
-                        // Call method to add milk
-                        // (you'll implement this method)
+                        AddMilk();
                         Console.WriteLine("Adding milk...");
+                        Thread.Sleep(1);
                         break;
                     case "2":
                         // Call method to edit milk
@@ -51,9 +54,9 @@ namespace MilkManagement
                         Console.WriteLine("Editing milk...");
                         break;
                     case "3":
-                        // Call method to delete milk
-                        // (you'll implement this method)
+                        DeleteMilk();
                         Console.WriteLine("Deleting milk...");
+                        Thread.Sleep(1);
                         break;
                     case "4":
                         // Display current Milk objects
@@ -74,11 +77,41 @@ namespace MilkManagement
                 }
             }
         }
+
+        public static void AddMilk()
+        {
+            var newMilk = new Milk();
+            newMilk.MilkInfoOutput();
+            milkList.Add(newMilk);
+            Console.WriteLine("Milk item added successfully.\n");
+        }
+
+        public static void DeleteMilk()
+        {
+            Console.WriteLine("Enter the Milk ID or Name to delete:");
+            string input = Console.ReadLine();
+
+            // Tìm đối tượng Milk có ID hoặc Tên khớp với input
+            Milk milkToDelete = milkList.Find(m => m.ValMilkID.Equals(input, StringComparison.OrdinalIgnoreCase) ||
+                                                   m.ValMilkName.Equals(input, StringComparison.OrdinalIgnoreCase));
+
+            if (milkToDelete != null)
+            {
+                milkList.Remove(milkToDelete);
+                Console.WriteLine("Milk successfully deleted.");
+            }
+            else
+            {
+                Console.WriteLine("Milk not found.");
+            }
+        }
     }
 }
 
 namespace MainData
 {
+    //public delegate void MilkActionDelegate();
+
     interface IMilkAction
     {
         void MilkInfoInput();
@@ -93,6 +126,9 @@ namespace MainData
         private DateTime ExpiredDate;
         private int Quantity;
 
+        //public MilkActionDelegate InputDelegate;
+        //public MilkActionDelegate OutputDelegate;
+
         public Milk(string milkName = "N/A", string productionDate = "", string expiredDate = "", int quantity = 0)
         {
             this.MilkName = milkName;
@@ -100,6 +136,12 @@ namespace MainData
             this.ExpiredDate = DateTime.ParseExact(expiredDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             this.MilkID = String.Format("MILK{0}", this.ProductionDate.ToString("ddMMyyyy"));
             this.Quantity = quantity;
+
+            MilkActionDelegate InputDelegate = new MilkActionDelegate(MilkInfoInput);
+            MilkActionDelegate OutputDelegate = new MilkActionDelegate(MilkInfoOutput);
+            
+            //InputDelegate = MilkInfoInput;
+            //OutputDelegate = MilkInfoOutput;
         }
 
         public void MilkInfoInput()
