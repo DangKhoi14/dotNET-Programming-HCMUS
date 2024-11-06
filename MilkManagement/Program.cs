@@ -75,7 +75,7 @@ namespace MilkManagement
         public static void AddMilk()
         {
             var newMilk = new Milk();
-            newMilk.MilkInfoOutput();
+            newMilk.MilkInfoInput();
             milkList.Add(newMilk);
             Console.WriteLine("Adding milk...");
             Thread.Sleep(1);
@@ -132,7 +132,7 @@ namespace MainData
         //public MilkActionDelegate InputDelegate;
         //public MilkActionDelegate OutputDelegate;
 
-        public Milk(string milkName = "N/A", string productionDate = "", string expiredDate = "", int quantity = 0)
+        public Milk(string milkName = "N/A", string productionDate = "01/01/1010", string expiredDate = "01/01/1010", int quantity = 0)
         {
             this.MilkName = milkName;
             this.ProductionDate = DateTime.ParseExact(productionDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
