@@ -33,9 +33,9 @@ namespace MilkManagement
                 Console.WriteLine("==========0==========");
                 Console.WriteLine("Menu:");
                 Console.WriteLine("1. Add Milk");
-                Console.WriteLine("2. Edit Milk");
-                Console.WriteLine("3. Delete Milk");
-                Console.WriteLine("4. Display Milk");
+                Console.WriteLine("2. Delete Milk");
+                Console.WriteLine("3. Display Milk");
+                Console.WriteLine("4. Clear Terminal");
                 Console.WriteLine("5. Exit Program");
                 Console.Write("Choose an option: ");
 
@@ -58,6 +58,9 @@ namespace MilkManagement
                         }
                         break;
                     case "4":
+                        ClearTerminal();
+                        break;
+                    case "5":
                         // Exit the program
                         isRunning = false;
                         break;
@@ -99,6 +102,11 @@ namespace MilkManagement
             {
                 Console.WriteLine("Milk not found.");
             }
+        }
+
+        public static void ClearTerminal()
+        {
+            Console.Clear();
         }
     }
 }
