@@ -45,20 +45,11 @@ namespace MilkManagement
                 {
                     case "1":
                         AddMilk();
-                        Console.WriteLine("Adding milk...");
-                        Thread.Sleep(1);
                         break;
                     case "2":
-                        // Call method to edit milk
-                        // (you'll implement this method)
-                        Console.WriteLine("Editing milk...");
+                        DeleteMilk();
                         break;
                     case "3":
-                        DeleteMilk();
-                        Console.WriteLine("Deleting milk...");
-                        Thread.Sleep(1);
-                        break;
-                    case "4":
                         // Display current Milk objects
                         Console.WriteLine("Current Milk Data:");
                         foreach (var milk in milkList)
@@ -66,13 +57,13 @@ namespace MilkManagement
                             milk.MilkInfoOutput();
                         }
                         break;
-                    case "5":
+                    case "4":
                         // Exit the program
                         isRunning = false;
                         break;
                     default:
                         Console.WriteLine("Invalid option. Please try again.");
-                        //Console.ReadLine();
+                        isRunning = false;
                         break;
                 }
             }
@@ -83,12 +74,14 @@ namespace MilkManagement
             var newMilk = new Milk();
             newMilk.MilkInfoOutput();
             milkList.Add(newMilk);
+            Console.WriteLine("Adding milk...");
+            Thread.Sleep(1);
             Console.WriteLine("Milk item added successfully.\n");
         }
 
         public static void DeleteMilk()
         {
-            Console.WriteLine("Enter the Milk ID or Name to delete:");
+            Console.Write("Enter the Milk ID or Name to delete:");
             string input = Console.ReadLine();
 
             // Tìm đối tượng Milk có ID hoặc Tên khớp với input
@@ -98,6 +91,8 @@ namespace MilkManagement
             if (milkToDelete != null)
             {
                 milkList.Remove(milkToDelete);
+                Console.WriteLine("Deleting milk...");
+                Thread.Sleep(1);
                 Console.WriteLine("Milk successfully deleted.");
             }
             else
