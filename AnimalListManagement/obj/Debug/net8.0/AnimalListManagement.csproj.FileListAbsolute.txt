@@ -1,0 +1,14 @@
+E:\dotNET Programming\AnimalListManagement\obj\Debug\net8.0\AnimalListManagement.GeneratedMSBuildEditorConfig.editorconfig
+E:\dotNET Programming\AnimalListManagement\obj\Debug\net8.0\AnimalListManagement.AssemblyInfoInputs.cache
+E:\dotNET Programming\AnimalListManagement\obj\Debug\net8.0\AnimalListManagement.AssemblyInfo.cs
+E:\dotNET Programming\AnimalListManagement\obj\Debug\net8.0\AnimalListManagement.csproj.CoreCompileInputs.cache
+E:\dotNET Programming\AnimalListManagement\bin\Debug\net8.0\AnimalListManagement.exe
+E:\dotNET Programming\AnimalListManagement\bin\Debug\net8.0\AnimalListManagement.deps.json
+E:\dotNET Programming\AnimalListManagement\bin\Debug\net8.0\AnimalListManagement.runtimeconfig.json
+E:\dotNET Programming\AnimalListManagement\bin\Debug\net8.0\AnimalListManagement.dll
+E:\dotNET Programming\AnimalListManagement\bin\Debug\net8.0\AnimalListManagement.pdb
+E:\dotNET Programming\AnimalListManagement\obj\Debug\net8.0\AnimalListManagement.dll
+E:\dotNET Programming\AnimalListManagement\obj\Debug\net8.0\refint\AnimalListManagement.dll
+E:\dotNET Programming\AnimalListManagement\obj\Debug\net8.0\AnimalListManagement.pdb
+E:\dotNET Programming\AnimalListManagement\obj\Debug\net8.0\AnimalListManagement.genruntimeconfig.cache
+E:\dotNET Programming\AnimalListManagement\obj\Debug\net8.0\ref\AnimalListManagement.dll

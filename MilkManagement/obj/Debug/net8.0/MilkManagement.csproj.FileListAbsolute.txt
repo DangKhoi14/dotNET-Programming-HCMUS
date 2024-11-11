@@ -1,0 +1,15 @@
+E:\dotNET Programming\MilkManagement\obj\Debug\net8.0\MilkManagement.GeneratedMSBuildEditorConfig.editorconfig
+E:\dotNET Programming\MilkManagement\obj\Debug\net8.0\MilkManagement.AssemblyInfoInputs.cache
+E:\dotNET Programming\MilkManagement\obj\Debug\net8.0\MilkManagement.AssemblyInfo.cs
+E:\dotNET Programming\MilkManagement\obj\Debug\net8.0\MilkManagement.csproj.CoreCompileInputs.cache
+E:\dotNET Programming\MilkManagement\obj\Debug\net8.0\MilkManagement.sourcelink.json
+E:\dotNET Programming\MilkManagement\bin\Debug\net8.0\MilkManagement.exe
+E:\dotNET Programming\MilkManagement\bin\Debug\net8.0\MilkManagement.deps.json
+E:\dotNET Programming\MilkManagement\bin\Debug\net8.0\MilkManagement.runtimeconfig.json
+E:\dotNET Programming\MilkManagement\bin\Debug\net8.0\MilkManagement.dll
+E:\dotNET Programming\MilkManagement\bin\Debug\net8.0\MilkManagement.pdb
+E:\dotNET Programming\MilkManagement\obj\Debug\net8.0\MilkManagement.dll
+E:\dotNET Programming\MilkManagement\obj\Debug\net8.0\refint\MilkManagement.dll
+E:\dotNET Programming\MilkManagement\obj\Debug\net8.0\MilkManagement.pdb
+E:\dotNET Programming\MilkManagement\obj\Debug\net8.0\MilkManagement.genruntimeconfig.cache
+E:\dotNET Programming\MilkManagement\obj\Debug\net8.0\ref\MilkManagement.dll

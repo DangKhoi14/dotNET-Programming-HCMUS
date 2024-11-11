@@ -1,0 +1,14 @@
+E:\dotNET Programming\SportsManagement\bin\Debug\net8.0\SportsManagement.exe
+E:\dotNET Programming\SportsManagement\bin\Debug\net8.0\SportsManagement.deps.json
+E:\dotNET Programming\SportsManagement\bin\Debug\net8.0\SportsManagement.runtimeconfig.json
+E:\dotNET Programming\SportsManagement\bin\Debug\net8.0\SportsManagement.dll
+E:\dotNET Programming\SportsManagement\bin\Debug\net8.0\SportsManagement.pdb
+E:\dotNET Programming\SportsManagement\obj\Debug\net8.0\SportsManagement.GeneratedMSBuildEditorConfig.editorconfig
+E:\dotNET Programming\SportsManagement\obj\Debug\net8.0\SportsManagement.AssemblyInfoInputs.cache
+E:\dotNET Programming\SportsManagement\obj\Debug\net8.0\SportsManagement.AssemblyInfo.cs
+E:\dotNET Programming\SportsManagement\obj\Debug\net8.0\SportsManagement.csproj.CoreCompileInputs.cache
+E:\dotNET Programming\SportsManagement\obj\Debug\net8.0\SportsManagement.dll
+E:\dotNET Programming\SportsManagement\obj\Debug\net8.0\refint\SportsManagement.dll
+E:\dotNET Programming\SportsManagement\obj\Debug\net8.0\SportsManagement.pdb
+E:\dotNET Programming\SportsManagement\obj\Debug\net8.0\SportsManagement.genruntimeconfig.cache
+E:\dotNET Programming\SportsManagement\obj\Debug\net8.0\ref\SportsManagement.dll

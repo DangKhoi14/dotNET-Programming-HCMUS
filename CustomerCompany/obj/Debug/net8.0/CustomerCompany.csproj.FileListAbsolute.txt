@@ -1,0 +1,15 @@
+E:\dotNET Programming\CustomerCompany\bin\Debug\net8.0\CustomerCompany.exe
+E:\dotNET Programming\CustomerCompany\bin\Debug\net8.0\CustomerCompany.deps.json
+E:\dotNET Programming\CustomerCompany\bin\Debug\net8.0\CustomerCompany.runtimeconfig.json
+E:\dotNET Programming\CustomerCompany\bin\Debug\net8.0\CustomerCompany.dll
+E:\dotNET Programming\CustomerCompany\bin\Debug\net8.0\CustomerCompany.pdb
+E:\dotNET Programming\CustomerCompany\obj\Debug\net8.0\CustomerCompany.GeneratedMSBuildEditorConfig.editorconfig
+E:\dotNET Programming\CustomerCompany\obj\Debug\net8.0\CustomerCompany.AssemblyInfoInputs.cache
+E:\dotNET Programming\CustomerCompany\obj\Debug\net8.0\CustomerCompany.AssemblyInfo.cs
+E:\dotNET Programming\CustomerCompany\obj\Debug\net8.0\CustomerCompany.csproj.CoreCompileInputs.cache
+E:\dotNET Programming\CustomerCompany\obj\Debug\net8.0\CustomerCompany.sourcelink.json
+E:\dotNET Programming\CustomerCompany\obj\Debug\net8.0\CustomerCompany.dll
+E:\dotNET Programming\CustomerCompany\obj\Debug\net8.0\refint\CustomerCompany.dll
+E:\dotNET Programming\CustomerCompany\obj\Debug\net8.0\CustomerCompany.pdb
+E:\dotNET Programming\CustomerCompany\obj\Debug\net8.0\CustomerCompany.genruntimeconfig.cache
+E:\dotNET Programming\CustomerCompany\obj\Debug\net8.0\ref\CustomerCompany.dll
