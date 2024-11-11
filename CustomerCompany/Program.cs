@@ -67,7 +67,13 @@ namespace MainData
             sb.AppendLine($"Name: {customer.CustomerName}");
             sb.AppendLine($"Address: {customer.CustomerAddress}");
             sb.AppendLine($"Phone: {customer.CustomerPhone}");
-            sb.AppendLine($"Type: {customer.CustomerType}");
+
+            string typeDescription = Customer.CustomerTypeDescriptions.ContainsKey(customer.CustomerType)
+                ? Customer.CustomerTypeDescriptions[customer.CustomerType]
+                : "Khong xac dinh";
+
+            sb.AppendLine($"Type: {typeDescription}");
+
             return sb.ToString();
         }
     }
@@ -75,7 +81,7 @@ namespace MainData
     public class Company
     {
         public string CompanyName { get; set; }
-        public List<Customer> ListOfCustomers { get; set; }
+        public List<Customer> ListOfCustomers { get; set; } = new List<Customer>;
 
         public Company() { }
         public Company(string CompanyName)
