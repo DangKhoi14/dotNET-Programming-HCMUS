@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace CustomerCompany
 {
@@ -14,7 +17,7 @@ namespace CustomerCompany
 
 namespace MainData
 {
-    public enum customertype { TrungThanh, TiemNang, CanQuanTam, KhachHangKhac};
+    public enum customertype { TrungThanh, TiemNang, CanQuanTam, KhachHangKhac };
 
     public class Customer
     {
@@ -23,6 +26,14 @@ namespace MainData
         public string CustomerAddress { get; set; }
         public string CustomerPhone { get; set; }
         public customertype CustomerType = customertype.KhachHangKhac;
+
+        public static readonly Dictionary<customertype, string> CustomerTypeDescriptions = new Dictionary<customertype, string>
+        {
+            { customertype.TrungThanh, "Khach hang trung thanh" },
+            { customertype.TiemNang, "Khach hang tiem nang" },
+            { customertype.CanQuanTam, "Khach hang can quan tam" },
+            { customertype.KhachHangKhac, "Khach hang khac" }
+        };
 
         public Customer() { }
         public Customer(string id, string name, string address, string phone, customertype type)
@@ -36,11 +47,58 @@ namespace MainData
 
         public void CustomerInfo()
         {
+            string typeDescription = CustomerTypeDescriptions.ContainsKey(CustomerType)
+                                     ? CustomerTypeDescriptions[CustomerType]
+                                     : "Khong xac dinh";
             Console.WriteLine($"Info of Customer ID: {CustomerID}\n" +
-                $"Name: {CustomerName}\n" +
-                $"Address: {CustomerAddress}\n" +
-                $"Phone: {CustomerPhone}\n" +
-                $"Type: {CustomerType}");
+                              $"Name: {CustomerName}\n" +
+                              $"Address: {CustomerAddress}\n" +
+                              $"Phone: {CustomerPhone}\n" +
+                              $"Type: ({typeDescription})");
+        }
+    }
+
+    public static class CustomerExtensions
+    {
+        public static string ConvertToString(this Customer customer)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Customer ID: {customer.CustomerID}");
+            sb.AppendLine($"Name: {customer.CustomerName}");
+            sb.AppendLine($"Address: {customer.CustomerAddress}");
+            sb.AppendLine($"Phone: {customer.CustomerPhone}");
+            sb.AppendLine($"Type: {customer.CustomerType}");
+            return sb.ToString();
+        }
+    }
+
+    public class Company
+    {
+        public string CompanyName { get; set; }
+        public List<Customer> ListOfCustomers { get; set; }
+
+        public Company() { }
+        public Company(string CompanyName)
+        {
+            this.CompanyName = CompanyName;
+        }
+
+        public void CompanyInfo()
+        {
+            Console.WriteLine($"Company: {CompanyName}");
+            Console.WriteLine("Customers: ");
+
+            int count = Math.Min(ListOfCustomers.Count, 5);
+            for (int i = 0; i < count; i++)
+            {
+                ListOfCustomers[i].CustomerInfo();
+                Console.WriteLine();
+            }
+
+            if (ListOfCustomers.Count > 5)
+            {
+                Console.WriteLine("...and more.");
+            }
         }
 
         public dynamic SearchCustomer<T>(T searchTerm)
@@ -74,50 +132,6 @@ namespace MainData
             }
 
             return null;
-        }
-    }
-
-    public static class CustomerExtensions
-    {
-        public static string ConvertToString(this Customer customer)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Customer ID: {customer.CustomerID}");
-            sb.AppendLine($"Name: {customer.CustomerName}");
-            sb.AppendLine($"Address: {customer.CustomerAddress}");
-            sb.AppendLine($"Phone: {customer.CustomerPhone}");
-            sb.AppendLine($"Type: {customer.CustomerType}");
-            return sb.ToString();
-        }
-    }
-
-    public class Company
-    {
-        public string CompanyName { get; set; }
-        public List<Customer> ListOfCustomers { get; set; }
-
-        public Company() { }
-        public Company(string CompanyName)
-        {
-            this.CompanyName = companyName;
-        }
-
-        public void CompanyInfo()
-        {
-            Console.WriteLine($"Company: {CompanyName}");
-            Console.WriteLine("Customers: ");
-
-            int count = Math.Min(ListOfCustomers.Count, 5);
-            for (int i = 0; i < count; i++)
-            {
-                ListOfCustomers[i].CustomerInfo();
-                Console.WriteLine();
-            }
-
-            if (ListOfCustomers.Count > 5)
-            {
-                Console.WriteLine("...and more.");
-            }
         }
     }
 }
