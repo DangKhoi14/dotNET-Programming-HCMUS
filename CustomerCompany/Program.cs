@@ -5,12 +5,101 @@ using System.Text;
 
 namespace CustomerCompany
 {
+    using MainData;
+
     public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Testestetste");
-            Console.ReadKey();
+            Company company = new Company("Tech Solutions");
+            AddDefaultCustomers(company);
+
+            bool isRunning = true;
+            while (isRunning)
+            {
+                Console.WriteLine("\n--- Company Customer Management ---");
+                Console.WriteLine("1. Add Customer");
+                Console.WriteLine("2. Remove Customer");
+                Console.WriteLine("3. Display Company Info");
+                Console.WriteLine("4. Search Customer");
+                Console.WriteLine("5. Exit");
+                Console.Write("Choose an option: ");
+
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        var customer = new Customer();
+                        customer.CustomerInput();
+                        company.AddCustomer(customer);
+                        break;
+                    case "2":
+                        Console.Write("Enter Customer ID to remove: ");
+                        string customerId = Console.ReadLine();
+                        var toRemove = company.ListOfCustomers.FirstOrDefault(c => c.CustomerID == customerId);
+                        if (toRemove != null)
+                        {
+                            company.RemoveCustomer(toRemove);
+                            Console.WriteLine("Customer removed.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Customer not found.");
+                        }
+                        break;
+                    case "3":
+                        company.CompanyInfo();
+                        break;
+                    case "4":
+                        Console.Write("Enter Customer Name to search: ");
+                        string name = Console.ReadLine();
+                        var result = company.SearchCustomer(name);
+                        if (result is Customer foundCustomer)
+                        {
+                            foundCustomer.CustomerInfo();
+                        }
+                        else if (result is List<Customer> foundList)
+                        {
+                            foreach (var c in foundList)
+                            {
+                                c.CustomerInfo();
+                                Console.WriteLine();
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Customer not found.");
+                        }
+                        break;
+                    case "5":
+                        isRunning = false;
+                        Console.WriteLine("Exiting program.");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option. Try again.");
+                        break;
+                }
+            }
+        }
+
+        static void AddDefaultCustomers(Company company)
+        {
+            var defaultCustomers = new List<Customer>
+            {
+                new Customer("C001", "Alice Nguyen", "123 Main St", "0123456789", customertype.TrungThanh),
+                new Customer("C002", "Bob Tran", "456 Oak Ave", "0987654321", customertype.TiemNang),
+                new Customer("C003", "Charlie Do", "789 Pine Rd", "0112233445", customertype.CanQuanTam),
+                new Customer("C004", "Daisy Pham", "101 Maple St", "0223344556", customertype.KhachHangKhac),
+                new Customer("C005", "Ethan Vu", "202 Birch Blvd", "0334455667", customertype.TrungThanh)
+            };
+
+            foreach (var customer in defaultCustomers)
+            {
+                company.AddCustomer(customer);
+            }
+
+            Console.WriteLine("Default customers added successfully.");
         }
     }
 }
@@ -45,6 +134,15 @@ namespace MainData
             CustomerType = type;
         }
 
+        public void CustomerInput()
+        {
+            Console.WriteLine("Enter Customer's information: ");
+            Console.Write("ID: "); CustomerID = Console.ReadLine();
+            Console.Write("Name: "); CustomerName = Console.ReadLine();
+            Console.Write("Address: "); CustomerAddress = Console.ReadLine();
+            Console.Write("Phone: "); CustomerPhone = Console.ReadLine();
+        }
+
         public void CustomerInfo()
         {
             string typeDescription = CustomerTypeDescriptions.ContainsKey(CustomerType)
@@ -54,34 +152,49 @@ namespace MainData
                               $"Name: {CustomerName}\n" +
                               $"Address: {CustomerAddress}\n" +
                               $"Phone: {CustomerPhone}\n" +
-                              $"Type: ({typeDescription})");
+                              $"Type: {typeDescription}");
         }
-    }
 
-    public static class CustomerExtensions
-    {
-        public static string ConvertToString(this Customer customer)
+        public string ValCusID
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Customer ID: {customer.CustomerID}");
-            sb.AppendLine($"Name: {customer.CustomerName}");
-            sb.AppendLine($"Address: {customer.CustomerAddress}");
-            sb.AppendLine($"Phone: {customer.CustomerPhone}");
+            get { return CustomerID; }
+            set { CustomerID = value; }
+        }
 
-            string typeDescription = Customer.CustomerTypeDescriptions.ContainsKey(customer.CustomerType)
-                ? Customer.CustomerTypeDescriptions[customer.CustomerType]
-                : "Khong xac dinh";
+        public string ValCusName
+        {
+            get { return CustomerName; }
+            set { CustomerName = value; }
+        }
 
-            sb.AppendLine($"Type: {typeDescription}");
+        public string ValCusAddress
+        {
+            get { return CustomerAddress; }
+            set { CustomerAddress = value; }
+        }
 
-            return sb.ToString();
+        public string ValCusPhone
+        {
+            get { return CustomerPhone; }
+            set { CustomerPhone = value; }
+        }
+
+        public customertype ValCusType
+        {
+            get { return CustomerType; }
+            set { CustomerType = value; }
         }
     }
 
     public class Company
     {
         public string CompanyName { get; set; }
-        public List<Customer> ListOfCustomers { get; set; } = new List<Customer>;
+        public List<Customer> ListOfCustomers { get; set; } = new List<Customer>();
+
+        public delegate void CompanyHandler(Company company);
+        public event CompanyHandler CompanyAddorRemoveEvent;
+
+        public int NumberOfCustomer => ListOfCustomers.Count;
 
         public Company() { }
         public Company(string CompanyName)
@@ -92,7 +205,7 @@ namespace MainData
         public void CompanyInfo()
         {
             Console.WriteLine($"Company: {CompanyName}");
-            Console.WriteLine("Customers: ");
+            Console.WriteLine($"Customers: {NumberOfCustomer}");
 
             int count = Math.Min(ListOfCustomers.Count, 5);
             for (int i = 0; i < count; i++)
@@ -113,21 +226,11 @@ namespace MainData
 
             if (searchTerm is string name)
             {
-                // Search by name
                 foundCustomers = ListOfCustomers
                     .Where(customer => customer.CustomerName.Equals(name, StringComparison.OrdinalIgnoreCase))
                     .ToList();
             }
-            else if (searchTerm is int index)
-            {
-                // Search by index
-                if (index >= 0 && index < ListOfCustomers.Count)
-                {
-                    foundCustomers.Add(ListOfCustomers[index]);
-                }
-            }
 
-            // Return the appropriate type based on the number of results
             if (foundCustomers.Count == 1)
             {
                 return foundCustomers[0];
@@ -138,6 +241,23 @@ namespace MainData
             }
 
             return null;
+        }
+
+        public void OnCompanyChanger(Company company)
+        {
+            CompanyAddorRemoveEvent?.Invoke(this);
+        }
+
+        public void AddCustomer(Customer customer)
+        {
+            ListOfCustomers.Add(customer);
+            OnCompanyChanger(this);
+        }
+
+        public void RemoveCustomer(Customer customer)
+        {
+            ListOfCustomers.Remove(customer);
+            OnCompanyChanger(this);
         }
     }
 }
