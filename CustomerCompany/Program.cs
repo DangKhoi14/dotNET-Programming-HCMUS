@@ -87,11 +87,11 @@ namespace CustomerCompany
         {
             var defaultCustomers = new List<Customer>
             {
-                new Customer("C001", "Alice Nguyen", "123 Main St", "0123456789", customertype.TrungThanh),
-                new Customer("C002", "Bob Tran", "456 Oak Ave", "0987654321", customertype.TiemNang),
-                new Customer("C003", "Charlie Do", "789 Pine Rd", "0112233445", customertype.CanQuanTam),
-                new Customer("C004", "Daisy Pham", "101 Maple St", "0223344556", customertype.KhachHangKhac),
-                new Customer("C005", "Ethan Vu", "202 Birch Blvd", "0334455667", customertype.TrungThanh)
+                new Customer("C001", "Alice Nguyen", "123 Main St", "C021", customertype.TrungThanh),
+                new Customer("C002", "Bob Tran", "456 Oak Ave", "C123", customertype.TiemNang),
+                new Customer("C003", "Charlie Do", "789 Pine Rd", "C095", customertype.CanQuanTam),
+                new Customer("C004", "Daisy Pham", "101 Maple St", "C956", customertype.KhachHangKhac),
+                new Customer("C005", "Ethan Vu", "202 Birch Blvd", "C033", customertype.TrungThanh)
             };
 
             foreach (var customer in defaultCustomers)
