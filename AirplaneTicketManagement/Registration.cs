@@ -12,14 +12,16 @@ namespace AirplaneTicketManagement
 {
     public partial class Registration : Form
     {
+        string startUpPath;
+        string avatarPath;
         Login LoginForm = new Login();
 
         public Registration(Login LoginForm)
         {
             InitializeComponent();
+            
             this.LoginForm = LoginForm;
-
-
+            startUpPath = this.LoginForm.startupPath;
         }
 
         private void Registration_Load(object sender, EventArgs e)
@@ -35,7 +37,7 @@ namespace AirplaneTicketManagement
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void lblRemoveImg_Click(object sender, EventArgs e)
