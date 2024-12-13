@@ -41,6 +41,16 @@ namespace AirplaneTicketManagement
             txtPassword.Clear();
         }
 
+        public bool isValidUsername(string username)
+        {
+            User duplicate = users.Find(x => (x.getUsername() == username));
+            if (duplicate == null)
+            {
+                return true;
+            }
+            else return false;
+        }
+
         public void addtoDictionary(string key, string value)
         {
             account.Add(key, value);

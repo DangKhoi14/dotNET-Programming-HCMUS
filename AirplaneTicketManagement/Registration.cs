@@ -18,6 +18,8 @@ namespace AirplaneTicketManagement
         {
             InitializeComponent();
             this.LoginForm = LoginForm;
+
+
         }
 
         private void Registration_Load(object sender, EventArgs e)
@@ -54,37 +56,44 @@ namespace AirplaneTicketManagement
             // Validate passwords
             if (string.IsNullOrEmpty(txtPassword.Text) || string.IsNullOrEmpty(txtConfirmPassword.Text))
             {
+                lblRegisterFailed.ForeColor = Color.Red;
                 lblRegisterFailed.Text = "Password cannot be blank.";
-                lblRegisterFailed.BackColor = Color.Red;
+                return;
+            }
+
+            if (!LoginForm.isValidUsername(txtUsername.Text))
+            {
+                lblRegisterFailed.ForeColor= Color.Red;
+                lblRegisterFailed.Text = "Username already exists";
                 return;
             }
 
             if (txtPassword.Text != txtConfirmPassword.Text)
             {
+                lblRegisterFailed.ForeColor = Color.Red;
                 lblRegisterFailed.Text = "Passwords do not match.";
-                lblRegisterFailed.BackColor = Color.Red;
                 return;
             }
 
             // Validate other fields
             if (string.IsNullOrEmpty(txtPassportNbr.Text))
             {
+                lblRegisterFailed.ForeColor = Color.Red;
                 lblRegisterFailed.Text = "Passport number cannot be blank.";
-                lblRegisterFailed.BackColor = Color.Red;
                 return;
             }
 
             if (string.IsNullOrEmpty(txtNationality.Text))
             {
+                lblRegisterFailed.ForeColor = Color.Red;
                 lblRegisterFailed.Text = "Nationality cannot be blank.";
-                lblRegisterFailed.BackColor = Color.Red;
                 return;
             }
 
             if (picAvatar.Image == null)
             {
+                lblRegisterFailed.ForeColor = Color.Red;
                 lblRegisterFailed.Text = "Please select an avatar.";
-                lblRegisterFailed.BackColor = Color.Red;
                 return;
             }
 
