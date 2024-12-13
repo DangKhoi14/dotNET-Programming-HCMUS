@@ -33,7 +33,7 @@
             lblRegistration = new Label();
             label1 = new Label();
             panel1 = new Panel();
-            txtName = new TextBox();
+            txtUsername = new TextBox();
             label2 = new Label();
             panel2 = new Panel();
             txtPassword = new TextBox();
@@ -101,12 +101,12 @@
             panel1.Size = new Size(455, 1);
             panel1.TabIndex = 3;
             // 
-            // txtName
+            // txtUsername
             // 
-            txtName.Location = new Point(99, 240);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(372, 23);
-            txtName.TabIndex = 4;
+            txtUsername.Location = new Point(99, 240);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(372, 23);
+            txtUsername.TabIndex = 4;
             // 
             // label2
             // 
@@ -131,9 +131,9 @@
             // 
             txtPassword.Location = new Point(152, 288);
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(319, 23);
             txtPassword.TabIndex = 4;
-            txtPassword.PasswordChar = '*';
             // 
             // label3
             // 
@@ -158,9 +158,9 @@
             // 
             txtConfirmPassword.Location = new Point(152, 336);
             txtConfirmPassword.Name = "txtConfirmPassword";
+            txtConfirmPassword.PasswordChar = '*';
             txtConfirmPassword.Size = new Size(319, 23);
             txtConfirmPassword.TabIndex = 4;
-            txtConfirmPassword.PasswordChar= '*';
             // 
             // label4
             // 
@@ -358,7 +358,7 @@
             Controls.Add(txtNationality);
             Controls.Add(txtPassportNbr);
             Controls.Add(panel6);
-            Controls.Add(txtName);
+            Controls.Add(txtUsername);
             Controls.Add(panel5);
             Controls.Add(label6);
             Controls.Add(label2);
@@ -384,7 +384,7 @@
         private Label lblRegistration;
         private Label label1;
         private Panel panel1;
-        private TextBox txtName;
+        private TextBox txtUsername;
         private Label label2;
         private Panel panel2;
         private TextBox txtPassword;

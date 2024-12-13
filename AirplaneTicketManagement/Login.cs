@@ -1,25 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+
 namespace AirplaneTicketManagement
 {
     public partial class Login : Form
     {
+        public static Login OriginalForm;
+        public string startupPath;
         private Dictionary<string, string> account = new Dictionary<string, string>();
-        private String userName = "";
-        private String password = "";
+        private string username = "";
+        private string password = "";
+        private List<Flight> flights = new List<Flight>();
+        private List<Customer> customers = new List<Customer>();
         private List<User> users = new List<User>();
-
+        private User currentUser;
 
         public Login()
         {
             InitializeComponent();
 
-            account.Add("test", "test");
-            account.Add("username", "password");
-            account.Add("", "");
+            OriginalForm = this;
+            startupPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+
+            User testUser = new User(" ", " ", "testID");
+            users.Add(testUser);
+
+            txtUsername.Focus();
         }
 
         public void clearFields()
         {
-            txtUserName.Clear();
+            txtUsername.Clear();
             txtPassword.Clear();
         }
 
@@ -28,23 +46,43 @@ namespace AirplaneTicketManagement
             account.Add(key, value);
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        public void addUser(Customer c, string password)
         {
-            userName = txtUserName.Text;
+            customers.Add(c);
+            User u = new User(c.getUsername(), password, c.getUserId());
+            users.Add(u);
+        }
+
+        private async void btnLogin_Click(object sender, EventArgs e)
+        {
+            username = txtUsername.Text;
             password = txtPassword.Text;
 
-            if (!account.ContainsKey(userName))
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                lblLoginFailed.Text = "Your Username is not exist";
+                lblLoginFailed.Text = "Please enter both Username and Password.";
+                txtUsername.Focus();
+                return;
             }
-            else if (account.ContainsKey(userName) && account[userName] == password)
+
+            currentUser = users.Find(x => (x.getUsername() == txtUsername.Text) && (x.getPassword() == txtPassword.Text));
+
+            if (currentUser != null)
             {
-                
+                lblLoginFailed.ForeColor = Color.Blue;
+                lblLoginFailed.Text = "Login Success";
+
+                await Task.Delay(1000);
+
+                // Change to another form
+                Application.Exit();
             }
             else
             {
-                lblLoginFailed.Text = "Login Failed !";
+                lblLoginFailed.ForeColor = Color.Red;
+                lblLoginFailed.Text = "Login Failed! Invalid Username or Password.";
                 txtPassword.Clear();
+                txtPassword.Focus();
             }
         }
 
@@ -57,7 +95,7 @@ namespace AirplaneTicketManagement
 
         private void lblClear_Click(object sender, EventArgs e)
         {
-            txtUserName.Clear();
+            txtUsername.Clear();
             txtPassword.Clear();
         }
 

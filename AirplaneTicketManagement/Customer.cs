@@ -29,7 +29,15 @@ namespace AirplaneTicketManagement
             string birthDate = birthday.ToString("yyyyMMdd"); // Format as YYYYMMDD
             CustomerId = $"{initials}-{birthDate}";
         }
+
+        public string getUserId()
+        {
+            return CustomerId;
+        }
+
+        public string getUsername()
+        {
+            return CustomerName;
+        }
     }
-
-
 }

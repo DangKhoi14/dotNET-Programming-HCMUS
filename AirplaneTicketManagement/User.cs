@@ -8,15 +8,25 @@ namespace AirplaneTicketManagement
 {
     public class User
     {
-        private string CustomerId { get; set; }
-        private string Username { get; set; }
-        private string Password { get; set; }
+        private string CustomerId;
+        private string Username;
+        private string Password;
 
         public User(string username, string password, string id)
         {
             Username = username;
             Password = password;
             CustomerId = id;
+        }
+
+        public string getUsername()
+        {
+            return Username;
+        }
+
+        public string getPassword()
+        {
+            return Password;
         }
     }
 }

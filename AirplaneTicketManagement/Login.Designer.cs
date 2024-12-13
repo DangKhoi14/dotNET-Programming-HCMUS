@@ -39,7 +39,7 @@
             lblClear = new Label();
             btnRegister = new Button();
             btnCancel = new Label();
-            txtUserName = new TextBox();
+            txtUsername = new TextBox();
             txtPassword = new TextBox();
             lblLoginFailed = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -158,16 +158,16 @@
             btnCancel.Text = "Cancel";
             btnCancel.Click += btnCancel_Click;
             // 
-            // txtUserName
+            // txtUsername
             // 
-            txtUserName.BorderStyle = BorderStyle.None;
-            txtUserName.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            txtUserName.ForeColor = Color.FromArgb(0, 117, 214);
-            txtUserName.Location = new Point(66, 167);
-            txtUserName.Multiline = true;
-            txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(195, 24);
-            txtUserName.TabIndex = 6;
+            txtUsername.BorderStyle = BorderStyle.None;
+            txtUsername.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            txtUsername.ForeColor = Color.FromArgb(0, 117, 214);
+            txtUsername.Location = new Point(66, 167);
+            txtUsername.Multiline = true;
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(195, 24);
+            txtUsername.TabIndex = 6;
             // 
             // txtPassword
             // 
@@ -177,9 +177,9 @@
             txtPassword.Location = new Point(66, 226);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(195, 24);
             txtPassword.TabIndex = 6;
-            txtPassword.PasswordChar = '*';
             // 
             // lblLoginFailed
             // 
@@ -200,7 +200,7 @@
             ClientSize = new Size(292, 447);
             Controls.Add(lblLoginFailed);
             Controls.Add(txtPassword);
-            Controls.Add(txtUserName);
+            Controls.Add(txtUsername);
             Controls.Add(btnCancel);
             Controls.Add(lblClear);
             Controls.Add(btnRegister);
@@ -239,7 +239,7 @@
         private Label lblClear;
         private Button btnRegister;
         private Label btnCancel;
-        private TextBox txtUserName;
+        private TextBox txtUsername;
         private TextBox txtPassword;
         private Label lblLoginFailed;
     }
