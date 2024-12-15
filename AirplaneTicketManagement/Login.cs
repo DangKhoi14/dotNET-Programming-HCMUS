@@ -40,6 +40,7 @@ namespace AirplaneTicketManagement
         {
             txtUsername.Clear();
             txtPassword.Clear();
+            lblLoginFailed.Text = "";
             txtUsername.Focus();
         }
 

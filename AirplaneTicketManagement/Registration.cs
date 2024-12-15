@@ -32,6 +32,7 @@ namespace AirplaneTicketManagement
         private void btnLogin_Click(object sender, EventArgs e)
         {
             LoginForm.Show();
+            LoginForm.clearFields();
             Hide();
         }
 
