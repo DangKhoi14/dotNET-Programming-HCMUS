@@ -20,6 +20,7 @@ namespace AirplaneTicketManagement
         private List<Customer> customers = new List<Customer>();
         private List<User> users = new List<User>();
         private User currentUser;
+        public bool ResetLogin;
 
         public Login()
         {
@@ -38,6 +39,7 @@ namespace AirplaneTicketManagement
         {
             txtUsername.Clear();
             txtPassword.Clear();
+            txtUsername.Focus();
         }
 
         public bool isValidUsername(string username)
@@ -79,7 +81,9 @@ namespace AirplaneTicketManagement
                 await Task.Delay(1000);
 
                 // Change to another form
-                Application.Exit();
+                Booking boo = new Booking();
+                boo.Show();
+                Hide();
             }
             else
             {

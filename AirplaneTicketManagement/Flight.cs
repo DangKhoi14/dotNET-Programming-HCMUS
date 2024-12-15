@@ -8,9 +8,21 @@ namespace AirplaneTicketManagement
 {
     public class Flight
     {
-        public string FlightID { get; set; }
-        public DateTime TimeDepart {  get; set; }
-        public DateTime TimeArrival { get; set; }
-        public string FlightType { get; set; }
+        public string FlightID;
+        public string Start;
+        public string End;
+        public DateTime TimeDepart;
+        public DateTime TimeArrival;
+        public string Airline;
+    
+        public Flight(string start, string end, DateTime timeDepart, DateTime timeArrival, string airline)
+        {
+            FlightID = airline + start + end + timeDepart.ToString();
+            Start = start;
+            End = end;
+            TimeDepart = timeDepart;
+            TimeArrival = timeArrival;
+            Airline = airline;
+        }
     }
 }
