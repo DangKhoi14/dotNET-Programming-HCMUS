@@ -14,7 +14,6 @@ namespace AirplaneTicketManagement
     {
         public static Login OriginalForm;
         public string startupPath;
-        private Dictionary<string, string> account = new Dictionary<string, string>();
         private string username = "";
         private string password = "";
         private List<Flight> flights = new List<Flight>();
@@ -49,11 +48,6 @@ namespace AirplaneTicketManagement
                 return true;
             }
             else return false;
-        }
-
-        public void addtoDictionary(string key, string value)
-        {
-            account.Add(key, value);
         }
 
         public void addUser(Customer c, string password)

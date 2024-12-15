@@ -17,3 +17,4 @@ E:\dotNET Programming\AirplaneTicketManagement\obj\Debug\net8.0-windows\Airplane
 E:\dotNET Programming\AirplaneTicketManagement\obj\Debug\net8.0-windows\AirplaneTicketManagement.genruntimeconfig.cache
 E:\dotNET Programming\AirplaneTicketManagement\obj\Debug\net8.0-windows\ref\AirplaneTicketManagement.dll
 E:\dotNET Programming\AirplaneTicketManagement\obj\Debug\net8.0-windows\AirplaneTicketManagement.Registration.resources
+E:\dotNET Programming\AirplaneTicketManagement\obj\Debug\net8.0-windows\AirplaneTicketManagement.Booking.resources

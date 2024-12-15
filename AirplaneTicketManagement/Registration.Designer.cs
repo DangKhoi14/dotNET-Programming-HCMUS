@@ -333,6 +333,7 @@
             btnExit.Size = new Size(32, 16);
             btnExit.TabIndex = 13;
             btnExit.Text = "Exit";
+            btnExit.Click += btnExit_Click;
             // 
             // Registration
             // 

@@ -19,9 +19,9 @@ namespace AirplaneTicketManagement
         public Registration(Login LoginForm)
         {
             InitializeComponent();
-            
+
             this.LoginForm = LoginForm;
-            startUpPath = this.LoginForm.startupPath;
+            this.startUpPath = this.LoginForm.startupPath;
         }
 
         private void Registration_Load(object sender, EventArgs e)
@@ -37,12 +37,25 @@ namespace AirplaneTicketManagement
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = startUpPath;
+                openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png|All files (*.*)|*.*";
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    avatarPath = openFileDialog.FileName;
+                    picAvatar.Image = Image.FromFile(avatarPath);
+                }
+            }
         }
 
         private void lblRemoveImg_Click(object sender, EventArgs e)
         {
-
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(Registration));
+            picAvatar.Image = ((System.Drawing.Image)(resources.GetObject("picAvatar.Image")));
+            picAvatar.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private async void btnRegister_Click(object sender, EventArgs e)
@@ -50,8 +63,8 @@ namespace AirplaneTicketManagement
             // Validate username
             if (string.IsNullOrEmpty(txtUsername.Text.Trim()))
             {
+                lblRegisterFailed.ForeColor = Color.Red;
                 lblRegisterFailed.Text = "Username cannot be blank.";
-                lblRegisterFailed.BackColor = Color.Red;
                 return;
             }
 
@@ -65,7 +78,7 @@ namespace AirplaneTicketManagement
 
             if (!LoginForm.isValidUsername(txtUsername.Text))
             {
-                lblRegisterFailed.ForeColor= Color.Red;
+                lblRegisterFailed.ForeColor = Color.Red;
                 lblRegisterFailed.Text = "Username already exists";
                 return;
             }
@@ -122,6 +135,11 @@ namespace AirplaneTicketManagement
 
             LoginForm.Show();
             Hide();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
