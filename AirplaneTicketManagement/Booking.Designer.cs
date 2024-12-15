@@ -53,6 +53,8 @@
             nudFirst = new NumericUpDown();
             label9 = new Label();
             pictureBox5 = new PictureBox();
+            lblShowUsername = new Label();
+            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudEconomy).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -330,6 +332,27 @@
             pictureBox5.TabIndex = 17;
             pictureBox5.TabStop = false;
             // 
+            // lblShowUsername
+            // 
+            lblShowUsername.AutoSize = true;
+            lblShowUsername.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            lblShowUsername.ForeColor = SystemColors.MenuHighlight;
+            lblShowUsername.Location = new Point(184, 9);
+            lblShowUsername.Name = "lblShowUsername";
+            lblShowUsername.Size = new Size(0, 17);
+            lblShowUsername.TabIndex = 19;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            label10.ForeColor = Color.Black;
+            label10.Location = new Point(85, 9);
+            label10.Name = "label10";
+            label10.Size = new Size(77, 17);
+            label10.TabIndex = 20;
+            label10.Text = "Username: ";
+            // 
             // Booking
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -337,6 +360,8 @@
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(984, 471);
+            Controls.Add(label10);
+            Controls.Add(lblShowUsername);
             Controls.Add(pictureBox5);
             Controls.Add(pictureBox4);
             Controls.Add(pictureBox3);
@@ -407,5 +432,7 @@
         private NumericUpDown nudFirst;
         private Label label9;
         private PictureBox pictureBox5;
+        private Label lblShowUsername;
+        private Label label10;
     }
 }

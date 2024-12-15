@@ -35,11 +35,12 @@ namespace AirplaneTicketManagement
             new Flight("HCM", "Dalat", DateTime.Now.AddHours(22), DateTime.Now.AddHours(23), "Timerland Airline"),
         };
 
-        public Booking()
+        public Booking(Login LoginForm)
         {
             InitializeComponent();
-            ParentForm = Login.OriginalForm;
+            ParentForm = LoginForm;
             
+            lblShowUsername.Text = ParentForm.getUsername();
         }
 
         private void Booking_Load(object sender, EventArgs e)

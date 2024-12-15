@@ -70,6 +70,11 @@ namespace AirplaneTicketManagement
             users.Add(u);
         }
 
+        public string getUsername()
+        {
+            return txtUsername.Text;
+        }
+
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             username = txtUsername.Text;
@@ -92,7 +97,7 @@ namespace AirplaneTicketManagement
                 await Task.Delay(1000);
 
                 // Change to another form
-                Booking boo = new Booking();
+                Booking boo = new Booking(this);
                 boo.Show();
                 Hide();
             }
