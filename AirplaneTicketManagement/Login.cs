@@ -41,6 +41,15 @@ namespace AirplaneTicketManagement
             txtUsername.Clear();
             txtPassword.Clear();
             lblLoginFailed.Text = "";
+
+            if (isPasswordVisible)
+            {
+                // Hide the password
+                txtPassword.PasswordChar = '*'; // Set to hide characters
+                picHideShowPassword.Image = Image.FromFile(Path.Combine(startupPath, "hide_pass_icon.png"));
+                isPasswordVisible = false;
+            }
+
             txtUsername.Focus();
         }
 
