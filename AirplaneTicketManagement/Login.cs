@@ -21,6 +21,7 @@ namespace AirplaneTicketManagement
         private List<User> users = new List<User>();
         private User currentUser;
         public bool ResetLogin;
+        private bool isPasswordVisible = false;
 
         public Login()
         {
@@ -112,9 +113,22 @@ namespace AirplaneTicketManagement
             Application.Exit();
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
+        private void picHideShowPassword_Click(object sender, EventArgs e)
         {
-
+            if (isPasswordVisible)
+            {
+                // Hide the password
+                txtPassword.PasswordChar = '*'; // Set to hide characters
+                picHideShowPassword.Image = Image.FromFile(Path.Combine(startupPath, "hide_pass_icon.png"));
+                isPasswordVisible = false;
+            }
+            else
+            {
+                // Show the password
+                txtPassword.PasswordChar = '\0'; // Remove masking
+                picHideShowPassword.Image = Image.FromFile(Path.Combine(startupPath, "show_pass_icon.png"));
+                isPasswordVisible = true;
+            }
         }
     }
 }

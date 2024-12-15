@@ -42,11 +42,11 @@
             txtUsername = new TextBox();
             txtPassword = new TextBox();
             lblLoginFailed = new Label();
-            pictureBox4 = new PictureBox();
+            picHideShowPassword = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picHideShowPassword).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -194,16 +194,16 @@
             lblLoginFailed.TabIndex = 7;
             lblLoginFailed.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // pictureBox4
+            // picHideShowPassword
             // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(207, 265);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(54, 25);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 8;
-            pictureBox4.TabStop = false;
-            pictureBox4.Click += pictureBox4_Click;
+            picHideShowPassword.Image = (Image)resources.GetObject("picHideShowPassword.Image");
+            picHideShowPassword.Location = new Point(207, 265);
+            picHideShowPassword.Name = "picHideShowPassword";
+            picHideShowPassword.Size = new Size(54, 25);
+            picHideShowPassword.SizeMode = PictureBoxSizeMode.Zoom;
+            picHideShowPassword.TabIndex = 8;
+            picHideShowPassword.TabStop = false;
+            picHideShowPassword.Click += picHideShowPassword_Click;
             // 
             // Login
             // 
@@ -211,7 +211,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(292, 447);
-            Controls.Add(pictureBox4);
+            Controls.Add(picHideShowPassword);
             Controls.Add(lblLoginFailed);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
@@ -232,7 +232,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picHideShowPassword).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -257,6 +257,6 @@
         private TextBox txtUsername;
         private TextBox txtPassword;
         private Label lblLoginFailed;
-        private PictureBox pictureBox4;
+        private PictureBox picHideShowPassword;
     }
 }
