@@ -113,7 +113,7 @@
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(25, 319);
+            btnLogin.Location = new Point(25, 339);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(236, 30);
             btnLogin.TabIndex = 4;
@@ -126,7 +126,7 @@
             lblClear.AutoSize = true;
             lblClear.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblClear.ForeColor = Color.FromArgb(0, 117, 214);
-            lblClear.Location = new Point(166, 290);
+            lblClear.Location = new Point(25, 274);
             lblClear.Name = "lblClear";
             lblClear.Size = new Size(95, 16);
             lblClear.TabIndex = 5;
@@ -140,7 +140,7 @@
             btnRegister.FlatStyle = FlatStyle.Flat;
             btnRegister.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnRegister.ForeColor = Color.White;
-            btnRegister.Location = new Point(55, 360);
+            btnRegister.Location = new Point(55, 380);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(176, 30);
             btnRegister.TabIndex = 4;
@@ -153,7 +153,7 @@
             btnCancel.AutoSize = true;
             btnCancel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCancel.ForeColor = Color.FromArgb(0, 117, 214);
-            btnCancel.Location = new Point(117, 418);
+            btnCancel.Location = new Point(117, 438);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(55, 16);
             btnCancel.TabIndex = 5;
@@ -188,7 +188,7 @@
             lblLoginFailed.Anchor = AnchorStyles.None;
             lblLoginFailed.AutoSize = true;
             lblLoginFailed.ForeColor = Color.Red;
-            lblLoginFailed.Location = new Point(25, 285);
+            lblLoginFailed.Location = new Point(25, 306);
             lblLoginFailed.Name = "lblLoginFailed";
             lblLoginFailed.Size = new Size(0, 15);
             lblLoginFailed.TabIndex = 7;
@@ -210,7 +210,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(292, 447);
+            ClientSize = new Size(292, 480);
             Controls.Add(picHideShowPassword);
             Controls.Add(lblLoginFailed);
             Controls.Add(txtPassword);
