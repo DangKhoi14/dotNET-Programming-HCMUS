@@ -42,9 +42,11 @@
             txtUsername = new TextBox();
             txtPassword = new TextBox();
             lblLoginFailed = new Label();
+            pictureBox4 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -124,7 +126,7 @@
             lblClear.AutoSize = true;
             lblClear.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblClear.ForeColor = Color.FromArgb(0, 117, 214);
-            lblClear.Location = new Point(166, 266);
+            lblClear.Location = new Point(166, 290);
             lblClear.Name = "lblClear";
             lblClear.Size = new Size(95, 16);
             lblClear.TabIndex = 5;
@@ -192,12 +194,24 @@
             lblLoginFailed.TabIndex = 7;
             lblLoginFailed.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(207, 265);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(54, 25);
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.TabIndex = 8;
+            pictureBox4.TabStop = false;
+            pictureBox4.Click += pictureBox4_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(292, 447);
+            Controls.Add(pictureBox4);
             Controls.Add(lblLoginFailed);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
@@ -218,6 +232,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -242,5 +257,6 @@
         private TextBox txtUsername;
         private TextBox txtPassword;
         private Label lblLoginFailed;
+        private PictureBox pictureBox4;
     }
 }

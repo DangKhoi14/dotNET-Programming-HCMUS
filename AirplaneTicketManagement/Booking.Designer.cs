@@ -366,7 +366,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "Booking";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Booking";
+            Text = "Nanaimo";
             WindowState = FormWindowState.Minimized;
             Load += Booking_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
