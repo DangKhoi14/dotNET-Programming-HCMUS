@@ -1,0 +1,17 @@
+E:\dotNET Programming\LaptopManagement\LaptopManagement\bin\Debug\net8.0-windows\LaptopManagement.exe
+E:\dotNET Programming\LaptopManagement\LaptopManagement\bin\Debug\net8.0-windows\LaptopManagement.deps.json
+E:\dotNET Programming\LaptopManagement\LaptopManagement\bin\Debug\net8.0-windows\LaptopManagement.runtimeconfig.json
+E:\dotNET Programming\LaptopManagement\LaptopManagement\bin\Debug\net8.0-windows\LaptopManagement.dll
+E:\dotNET Programming\LaptopManagement\LaptopManagement\bin\Debug\net8.0-windows\LaptopManagement.pdb
+E:\dotNET Programming\LaptopManagement\LaptopManagement\obj\Debug\net8.0-windows\LaptopManagement.Management.resources
+E:\dotNET Programming\LaptopManagement\LaptopManagement\obj\Debug\net8.0-windows\LaptopManagement.csproj.GenerateResource.cache
+E:\dotNET Programming\LaptopManagement\LaptopManagement\obj\Debug\net8.0-windows\LaptopManagement.GeneratedMSBuildEditorConfig.editorconfig
+E:\dotNET Programming\LaptopManagement\LaptopManagement\obj\Debug\net8.0-windows\LaptopManagement.AssemblyInfoInputs.cache
+E:\dotNET Programming\LaptopManagement\LaptopManagement\obj\Debug\net8.0-windows\LaptopManagement.AssemblyInfo.cs
+E:\dotNET Programming\LaptopManagement\LaptopManagement\obj\Debug\net8.0-windows\LaptopManagement.csproj.CoreCompileInputs.cache
+E:\dotNET Programming\LaptopManagement\LaptopManagement\obj\Debug\net8.0-windows\LaptopManagement.sourcelink.json
+E:\dotNET Programming\LaptopManagement\LaptopManagement\obj\Debug\net8.0-windows\LaptopManagement.dll
+E:\dotNET Programming\LaptopManagement\LaptopManagement\obj\Debug\net8.0-windows\refint\LaptopManagement.dll
+E:\dotNET Programming\LaptopManagement\LaptopManagement\obj\Debug\net8.0-windows\LaptopManagement.pdb
+E:\dotNET Programming\LaptopManagement\LaptopManagement\obj\Debug\net8.0-windows\LaptopManagement.genruntimeconfig.cache
+E:\dotNET Programming\LaptopManagement\LaptopManagement\obj\Debug\net8.0-windows\ref\LaptopManagement.dll
