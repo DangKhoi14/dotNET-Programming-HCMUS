@@ -36,6 +36,9 @@
             btnUpdate = new Button();
             btnDelete = new Button();
             btnUpdateToDataSource = new Button();
+            picImage = new PictureBox();
+            lblExit = new Label();
+            panel1 = new Panel();
             colLaptopID = new DataGridViewTextBoxColumn();
             colLaptopName = new DataGridViewTextBoxColumn();
             colLaptopType = new DataGridViewTextBoxColumn();
@@ -45,9 +48,6 @@
             colRAM = new DataGridViewTextBoxColumn();
             colPrice = new DataGridViewTextBoxColumn();
             colImageName = new DataGridViewTextBoxColumn();
-            picImage = new PictureBox();
-            lblExit = new Label();
-            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgwLaptopList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picImage).BeginInit();
             SuspendLayout();
@@ -119,60 +119,6 @@
             btnUpdateToDataSource.Text = "Update To Data Source";
             btnUpdateToDataSource.UseVisualStyleBackColor = true;
             // 
-            // colLaptopID
-            // 
-            colLaptopID.DataPropertyName = "ID";
-            colLaptopID.HeaderText = "ID";
-            colLaptopID.Name = "colLaptopID";
-            // 
-            // colLaptopName
-            // 
-            colLaptopName.DataPropertyName = "Name";
-            colLaptopName.HeaderText = "Name";
-            colLaptopName.Name = "colLaptopName";
-            // 
-            // colLaptopType
-            // 
-            colLaptopType.DataPropertyName = "Type";
-            colLaptopType.HeaderText = "Type";
-            colLaptopType.Name = "colLaptopType";
-            // 
-            // colProductDate
-            // 
-            colProductDate.DataPropertyName = "ProductDate";
-            colProductDate.HeaderText = "Product Date";
-            colProductDate.Name = "colProductDate";
-            // 
-            // colProcessor
-            // 
-            colProcessor.DataPropertyName = "Processor";
-            colProcessor.HeaderText = "Processor";
-            colProcessor.Name = "colProcessor";
-            // 
-            // colHDD
-            // 
-            colHDD.DataPropertyName = "HDD";
-            colHDD.HeaderText = "HDD";
-            colHDD.Name = "colHDD";
-            // 
-            // colRAM
-            // 
-            colRAM.DataPropertyName = "RAM";
-            colRAM.HeaderText = "RAM";
-            colRAM.Name = "colRAM";
-            // 
-            // colPrice
-            // 
-            colPrice.DataPropertyName = "Price";
-            colPrice.HeaderText = "Price";
-            colPrice.Name = "colPrice";
-            // 
-            // colImageName
-            // 
-            colImageName.DataPropertyName = "ImageName";
-            colImageName.HeaderText = "Image Name";
-            colImageName.Name = "colImageName";
-            // 
             // picImage
             // 
             picImage.Location = new Point(555, 336);
@@ -200,6 +146,63 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(533, 1);
             panel1.TabIndex = 6;
+            // 
+            // colLaptopID
+            // 
+            colLaptopID.DataPropertyName = "ID";
+            colLaptopID.HeaderText = "ID";
+            colLaptopID.Name = "colLaptopID";
+            colLaptopID.Width = 80;
+            // 
+            // colLaptopName
+            // 
+            colLaptopName.DataPropertyName = "Name";
+            colLaptopName.HeaderText = "Name";
+            colLaptopName.Name = "colLaptopName";
+            colLaptopName.Width = 110;
+            // 
+            // colLaptopType
+            // 
+            colLaptopType.DataPropertyName = "Type";
+            colLaptopType.HeaderText = "Type";
+            colLaptopType.Name = "colLaptopType";
+            // 
+            // colProductDate
+            // 
+            colProductDate.DataPropertyName = "ProductDate";
+            colProductDate.HeaderText = "Product Date";
+            colProductDate.Name = "colProductDate";
+            // 
+            // colProcessor
+            // 
+            colProcessor.DataPropertyName = "Processor";
+            colProcessor.HeaderText = "Processor";
+            colProcessor.Name = "colProcessor";
+            colProcessor.Width = 110;
+            // 
+            // colHDD
+            // 
+            colHDD.DataPropertyName = "HDD";
+            colHDD.HeaderText = "HDD";
+            colHDD.Name = "colHDD";
+            // 
+            // colRAM
+            // 
+            colRAM.DataPropertyName = "RAM";
+            colRAM.HeaderText = "RAM";
+            colRAM.Name = "colRAM";
+            // 
+            // colPrice
+            // 
+            colPrice.DataPropertyName = "Price";
+            colPrice.HeaderText = "Price";
+            colPrice.Name = "colPrice";
+            // 
+            // colImageName
+            // 
+            colImageName.DataPropertyName = "ImageName";
+            colImageName.HeaderText = "Image Name";
+            colImageName.Name = "colImageName";
             // 
             // Management
             // 
@@ -234,6 +237,9 @@
         private Button btnUpdate;
         private Button btnDelete;
         private Button btnUpdateToDataSource;
+        private PictureBox picImage;
+        private Label lblExit;
+        private Panel panel1;
         private DataGridViewTextBoxColumn colLaptopID;
         private DataGridViewTextBoxColumn colLaptopName;
         private DataGridViewTextBoxColumn colLaptopType;
@@ -243,8 +249,5 @@
         private DataGridViewTextBoxColumn colRAM;
         private DataGridViewTextBoxColumn colPrice;
         private DataGridViewTextBoxColumn colImageName;
-        private PictureBox picImage;
-        private Label lblExit;
-        private Panel panel1;
     }
 }

@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="img\" />
+    <Folder Include="data\" />
+    <Folder Include="img\LaptopListImg\" />
   </ItemGroup>
 
 </Project>
