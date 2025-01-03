@@ -16,7 +16,7 @@ namespace LaptopManagement.Models
         public string HDD { get; set; }
         public string RAM { get; set; }
         public int Price { get; set; }
-        public string ImageName => $"{LaptopName}.png";
+        public string ImageName { get; set; }
 
         public Laptop()
         {
@@ -33,6 +33,7 @@ namespace LaptopManagement.Models
             HDD = hdd;
             RAM = ram;
             Price = price;
+            ImageName = laptopName + ".png";
         }
 
         public override string ToString()

@@ -61,6 +61,7 @@
             btnLoadFromExcel.TabIndex = 0;
             btnLoadFromExcel.Text = "Load Data From Excel";
             btnLoadFromExcel.UseVisualStyleBackColor = true;
+            btnLoadFromExcel.Click += btnLoadFromExcel_Click;
             // 
             // btnLoadFromSQL
             // 
@@ -71,6 +72,7 @@
             btnLoadFromSQL.TabIndex = 0;
             btnLoadFromSQL.Text = "Load Data From SQL Server";
             btnLoadFromSQL.UseVisualStyleBackColor = true;
+            btnLoadFromSQL.Click += btnLoadFromSQL_Click;
             // 
             // dgwLaptopList
             // 
@@ -82,6 +84,7 @@
             dgwLaptopList.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dgwLaptopList.Size = new Size(943, 270);
             dgwLaptopList.TabIndex = 1;
+            dgwLaptopList.SelectionChanged += dgwLaptopList_SelectionChanged;
             // 
             // btnAdd
             // 
@@ -100,6 +103,7 @@
             btnUpdate.TabIndex = 2;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnDelete
             // 
@@ -109,6 +113,7 @@
             btnDelete.TabIndex = 2;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdateToDataSource
             // 
@@ -138,6 +143,7 @@
             lblExit.Size = new Size(44, 18);
             lblExit.TabIndex = 5;
             lblExit.Text = "EXIT";
+            lblExit.Click += lblExit_Click;
             // 
             // panel1
             // 
@@ -149,21 +155,22 @@
             // 
             // colLaptopID
             // 
-            colLaptopID.DataPropertyName = "ID";
+            colLaptopID.DataPropertyName = "LaptopID";
             colLaptopID.HeaderText = "ID";
             colLaptopID.Name = "colLaptopID";
+            colLaptopID.ReadOnly = true;
             colLaptopID.Width = 80;
             // 
             // colLaptopName
             // 
-            colLaptopName.DataPropertyName = "Name";
+            colLaptopName.DataPropertyName = "LaptopName";
             colLaptopName.HeaderText = "Name";
             colLaptopName.Name = "colLaptopName";
-            colLaptopName.Width = 110;
+            colLaptopName.Width = 120;
             // 
             // colLaptopType
             // 
-            colLaptopType.DataPropertyName = "Type";
+            colLaptopType.DataPropertyName = "LaptopType";
             colLaptopType.HeaderText = "Type";
             colLaptopType.Name = "colLaptopType";
             // 
@@ -178,25 +185,28 @@
             colProcessor.DataPropertyName = "Processor";
             colProcessor.HeaderText = "Processor";
             colProcessor.Name = "colProcessor";
-            colProcessor.Width = 110;
+            colProcessor.Width = 120;
             // 
             // colHDD
             // 
             colHDD.DataPropertyName = "HDD";
             colHDD.HeaderText = "HDD";
             colHDD.Name = "colHDD";
+            colHDD.Width = 95;
             // 
             // colRAM
             // 
             colRAM.DataPropertyName = "RAM";
             colRAM.HeaderText = "RAM";
             colRAM.Name = "colRAM";
+            colRAM.Width = 95;
             // 
             // colPrice
             // 
             colPrice.DataPropertyName = "Price";
-            colPrice.HeaderText = "Price";
+            colPrice.HeaderText = "Price (USD)";
             colPrice.Name = "colPrice";
+            colPrice.Width = 90;
             // 
             // colImageName
             // 
@@ -222,10 +232,16 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Management";
             Text = "Laptop Management";
+            Load += Management_Load;
             ((System.ComponentModel.ISupportInitialize)dgwLaptopList).EndInit();
             ((System.ComponentModel.ISupportInitialize)picImage).EndInit();
             ResumeLayout(false);
             PerformLayout();
+        }
+
+        private void DgwLaptopList_SelectionChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
