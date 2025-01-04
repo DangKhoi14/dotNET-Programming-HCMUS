@@ -32,13 +32,6 @@
             btnLoadFromExcel = new Button();
             btnLoadFromSQL = new Button();
             dgwLaptopList = new DataGridView();
-            btnAdd = new Button();
-            btnUpdate = new Button();
-            btnDelete = new Button();
-            btnUpdateToDataSource = new Button();
-            picImage = new PictureBox();
-            lblExit = new Label();
-            panel1 = new Panel();
             colLaptopID = new DataGridViewTextBoxColumn();
             colLaptopName = new DataGridViewTextBoxColumn();
             colLaptopType = new DataGridViewTextBoxColumn();
@@ -48,6 +41,13 @@
             colRAM = new DataGridViewTextBoxColumn();
             colPrice = new DataGridViewTextBoxColumn();
             colImageName = new DataGridViewTextBoxColumn();
+            btnAdd = new Button();
+            btnUpdate = new Button();
+            btnDelete = new Button();
+            btnUpdateToDataSource = new Button();
+            picImage = new PictureBox();
+            lblExit = new Label();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgwLaptopList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picImage).BeginInit();
             SuspendLayout();
@@ -85,73 +85,6 @@
             dgwLaptopList.Size = new Size(943, 270);
             dgwLaptopList.TabIndex = 1;
             dgwLaptopList.SelectionChanged += dgwLaptopList_SelectionChanged;
-            // 
-            // btnAdd
-            // 
-            btnAdd.Location = new Point(12, 336);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(537, 40);
-            btnAdd.TabIndex = 2;
-            btnAdd.Text = "Add";
-            btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // btnUpdate
-            // 
-            btnUpdate.Location = new Point(12, 382);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(537, 40);
-            btnUpdate.TabIndex = 2;
-            btnUpdate.Text = "Update";
-            btnUpdate.UseVisualStyleBackColor = true;
-            btnUpdate.Click += btnUpdate_Click;
-            // 
-            // btnDelete
-            // 
-            btnDelete.Location = new Point(12, 428);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(537, 40);
-            btnDelete.TabIndex = 2;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
-            // 
-            // btnUpdateToDataSource
-            // 
-            btnUpdateToDataSource.Location = new Point(12, 511);
-            btnUpdateToDataSource.Name = "btnUpdateToDataSource";
-            btnUpdateToDataSource.Size = new Size(537, 50);
-            btnUpdateToDataSource.TabIndex = 3;
-            btnUpdateToDataSource.Text = "Update To Data Source";
-            btnUpdateToDataSource.UseVisualStyleBackColor = true;
-            // 
-            // picImage
-            // 
-            picImage.Location = new Point(555, 336);
-            picImage.Name = "picImage";
-            picImage.Size = new Size(400, 225);
-            picImage.SizeMode = PictureBoxSizeMode.Zoom;
-            picImage.TabIndex = 4;
-            picImage.TabStop = false;
-            // 
-            // lblExit
-            // 
-            lblExit.AutoSize = true;
-            lblExit.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            lblExit.ForeColor = Color.Red;
-            lblExit.Location = new Point(837, 18);
-            lblExit.Name = "lblExit";
-            lblExit.Size = new Size(44, 18);
-            lblExit.TabIndex = 5;
-            lblExit.Text = "EXIT";
-            lblExit.Click += lblExit_Click;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.ActiveCaptionText;
-            panel1.Location = new Point(14, 490);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(533, 1);
-            panel1.TabIndex = 6;
             // 
             // colLaptopID
             // 
@@ -213,6 +146,75 @@
             colImageName.DataPropertyName = "ImageName";
             colImageName.HeaderText = "Image Name";
             colImageName.Name = "colImageName";
+            // 
+            // btnAdd
+            // 
+            btnAdd.Location = new Point(12, 336);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(537, 40);
+            btnAdd.TabIndex = 2;
+            btnAdd.Text = "Add";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // btnUpdate
+            // 
+            btnUpdate.Location = new Point(12, 382);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(537, 40);
+            btnUpdate.TabIndex = 2;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(12, 428);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(537, 40);
+            btnDelete.TabIndex = 2;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // btnUpdateToDataSource
+            // 
+            btnUpdateToDataSource.Location = new Point(12, 511);
+            btnUpdateToDataSource.Name = "btnUpdateToDataSource";
+            btnUpdateToDataSource.Size = new Size(537, 50);
+            btnUpdateToDataSource.TabIndex = 3;
+            btnUpdateToDataSource.Text = "Update To Data Source";
+            btnUpdateToDataSource.UseVisualStyleBackColor = true;
+            btnUpdateToDataSource.Click += btnUpdateToDataSource_Click;
+            // 
+            // picImage
+            // 
+            picImage.Location = new Point(555, 336);
+            picImage.Name = "picImage";
+            picImage.Size = new Size(400, 225);
+            picImage.SizeMode = PictureBoxSizeMode.Zoom;
+            picImage.TabIndex = 4;
+            picImage.TabStop = false;
+            // 
+            // lblExit
+            // 
+            lblExit.AutoSize = true;
+            lblExit.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lblExit.ForeColor = Color.Red;
+            lblExit.Location = new Point(837, 18);
+            lblExit.Name = "lblExit";
+            lblExit.Size = new Size(44, 18);
+            lblExit.TabIndex = 5;
+            lblExit.Text = "EXIT";
+            lblExit.Click += lblExit_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ActiveCaptionText;
+            panel1.Location = new Point(14, 490);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(533, 1);
+            panel1.TabIndex = 6;
             // 
             // Management
             // 

@@ -108,10 +108,7 @@ namespace LaptopManagement
                                 LaptopType = cellValue?.ToString() ?? "";
                                 break;
                             case 4:
-                                if (double.TryParse(cellValue?.ToString(), out double excelDate))
-                                {
-                                    ProductDate = DateTime.FromOADate(excelDate);
-                                }
+                                ProductDate = DateTime.ParseExact(xlRange.Cells[i, j].Value2.ToString(),"dd/MM/yyyy", CultureInfo.InvariantCulture);
                                 break;
                             case 5:
                                 Processor = cellValue?.ToString() ?? "";
@@ -168,44 +165,19 @@ namespace LaptopManagement
 
         private void btnLoadFromExcel_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Clear existing data
-                loadData = 1;
-                datatable = new DataTable();
-                LtpList.Clear();
+            loadData = 1;
+            datatable = new DataTable();
+            LtpList.Clear();
 
-                // Read data from Excel
-                int colCount = 9; // Match your Excel column count
-                int NumDataRow = ReadDataFromFile(LtpList, ExcelFilePath, colCount);
+            int colCount = 9;
+            int NumDataRow = ReadDataFromFile(LtpList, ExcelFilePath, colCount);
 
-                if (NumDataRow > 0)
-                {
-                    // Reset and rebind data
-                    binding.DataSource = null; // Clear existing binding
-                    binding.DataSource = LtpList; // Bind new data
-                    dgwLaptopList.AutoGenerateColumns = false;
-                    dgwLaptopList.DataSource = binding;
+            // Binding data to the grid
+            binding.AllowNew = true;
+            binding.DataSource = LtpList;
+            dgwLaptopList.AutoGenerateColumns = false;
+            dgwLaptopList.DataSource = binding;
 
-                    // Force UI updates
-                    if (dgwLaptopList.Rows.Count > 0)
-                    {
-                        dgwLaptopList.ClearSelection();
-                        dgwLaptopList.Rows[0].Selected = true; // Select first row
-                    }
-
-                    // Clear picture box if needed
-                    picImage.Image = null;
-                }
-                else
-                {
-                    MessageBox.Show("No data loaded from Excel.", "Load Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading data from Excel: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void lblExit_Click(object sender, EventArgs e)
@@ -220,10 +192,14 @@ namespace LaptopManagement
             var CurrentLaptopIndex = dgwLaptopList.CurrentRow.Index;
             subPath = "\\data\\LaptopListImg\\";
 
-            if (CurrentLaptopIndex >= 0 && CurrentLaptopIndex < LtpList.Count)
+            try
             {
-                picImage.Image = Image.FromFile(ProjectPath + subPath + LtpList[CurrentLaptopIndex].ImageName);
+                if (CurrentLaptopIndex >= 0 && CurrentLaptopIndex < LtpList.Count)
+                {
+                    picImage.Image = Image.FromFile(ProjectPath + subPath + LtpList[CurrentLaptopIndex].ImageName);
+                }
             }
+            catch { }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -235,13 +211,33 @@ namespace LaptopManagement
 
                 LtpList[i].LaptopName = row["LaptopName"].ToString();
                 LtpList[i].LaptopType = row["LaptopType"].ToString();
-                LtpList[i].ProductDate = DateTime.ParseExact(row["ProductDate"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                // Handle ProductDate parsing
+                string dateString = row["ProductDate"].ToString();
+                if (DateTime.TryParse(dateString, out DateTime parsedDate))
+                {
+                    LtpList[i].ProductDate = parsedDate;
+                }
+                else
+                {
+                    MessageBox.Show($"Invalid date format for row {i + 1}: {dateString}");
+                    continue; // Skip this row if the date is invalid
+                }
+
                 LtpList[i].Processor = row["Processor"].ToString();
                 LtpList[i].HDD = row["HDD"].ToString();
                 LtpList[i].RAM = row["RAM"].ToString();
 
                 string StringPrice = row["Price"].ToString();
-                LtpList[i].Price = Convert.ToInt32(StringPrice.Substring(0, StringPrice.IndexOf(" ")));
+                if (StringPrice.Contains(" "))
+                {
+                    LtpList[i].Price = Convert.ToInt32(StringPrice.Substring(0, StringPrice.IndexOf(" ")));
+                }
+                else
+                {
+                    LtpList[i].Price = Convert.ToInt32(StringPrice);
+                }
+
                 LtpList[i].ImageName = LtpList[i].LaptopName + ".png";
             }
 
@@ -270,7 +266,7 @@ namespace LaptopManagement
             newrow["HDD"] = lt.HDD;
             newrow["RAM"] = lt.RAM;
             newrow["Price"] = lt.Price.ToString();
-            newrow["ImageName"] = lt.ImageName;
+            newrow["ImageName"] = lt.LaptopName + ".png";
             datatable.Rows.Add(newrow);
             datatable.AcceptChanges();
 
@@ -279,24 +275,49 @@ namespace LaptopManagement
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Laptop lt;
-            if (CurrentLaptopIndex >= 0)
-                lt = LtpList[CurrentLaptopIndex];
-            else
+            // Ensure there is a valid selection
+            if (dgwLaptopList.CurrentRow == null || dgwLaptopList.CurrentRow.IsNewRow)
+            {
+                MessageBox.Show("No laptop selected for deletion.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
 
-            string question = "Do you want to delete Laptop: " + lt.LaptopName;
+            // Get the selected index
+            int selectedIndex = dgwLaptopList.CurrentRow.Index;
 
+            // Ensure the index is within the valid range
+            if (selectedIndex < 0 || selectedIndex >= LtpList.Count)
+            {
+                MessageBox.Show("No laptop selected for deletion.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Retrieve the laptop object
+            Laptop selectedLaptop = LtpList[selectedIndex];
+
+            // Confirm deletion
+            string question = $"Do you want to delete Laptop: {selectedLaptop.LaptopName}?";
             DialogResult result = MessageBox.Show(question, "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-                LtpList.RemoveAt(CurrentLaptopIndex);
-                binding.RemoveAt(CurrentLaptopIndex);
-            }
+                // Remove the item from the list
+                LtpList.RemoveAt(selectedIndex);
 
-            MessageBox.Show("Finish Delete");
+                // Remove the item from the binding source if it exists
+                if (selectedIndex < binding.Count)
+                {
+                    binding.RemoveAt(selectedIndex);
+                }
+
+                // Refresh the DataGridView
+                dgwLaptopList.ClearSelection();
+                binding.ResetBindings(false);
+
+                MessageBox.Show("Laptop deleted successfully.", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
 
         private int ReadDataFromSQLServer(List<Laptop> LtpList, string connectionString)
         {
@@ -350,7 +371,7 @@ namespace LaptopManagement
                 MessageBox.Show("Finish Load Data from SQL Server " + NumRecords.ToString() + " Records");
                 cnn.Close();
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Can not open connection " + ex.Message);
             }
@@ -410,6 +431,94 @@ namespace LaptopManagement
             binding.DataSource = datatable;
             dgwLaptopList.AutoGenerateColumns = false;
             dgwLaptopList.DataSource = binding;
+
+            binding.AllowNew = true;
+            binding.DataSource = LtpList;
+            dgwLaptopList.AutoGenerateColumns = false;
+            dgwLaptopList.DataSource = binding;
+        }
+
+        private void WriteDataToExcelFile(List<Laptop> LtpList, string ExcelPath)
+        {
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(ExcelFilePath);
+            Excel._Worksheet xlWorksheet = xlWorkbook.Worksheets[1];
+
+            Excel.Range xlRange;
+            string[,] Data = new string[1, 9];
+
+            int idxRow = 2;
+            foreach (Laptop l in LtpList)
+            {
+                Data[0, 0] = l.LaptopID.ToString();
+                Data[0, 1] = l.LaptopName;
+                Data[0, 2] = l.LaptopType;
+                Data[0, 3] = l.ProductDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+                Data[0, 4] = l.Processor;
+                Data[0, 5] = l.HDD;
+                Data[0, 6] = l.RAM;
+                Data[0, 7] = l.Price.ToString();
+                Data[0, 8] = l.ImageName;
+
+                xlRange = xlWorksheet.get_Range("A" + idxRow.ToString(), "I" + idxRow.ToString());
+                xlRange.Value2 = Data;
+
+                idxRow++;
+            }
+
+            xlWorkbook.Save();
+            xlWorkbook.Close();
+            xlApp.Quit();
+        }
+
+        private void WriteDataToSQLServer(List<Laptop> LtpList, string connectionString)
+        {
+            using (SqlConnection cnn = new SqlConnection(connectionString))
+            {
+                cnn.Open();
+
+                string truncateQuery = "TRUNCATE TABLE Laptop";
+                using (var truncateCommand = new SqlCommand(truncateQuery, cnn))
+                {
+                    truncateCommand.ExecuteNonQuery();
+                }
+
+                string insertQuery = @"INSERT INTO Laptop (
+                                LaptopID, LaptopName, LaptopType, ProductDate, 
+                                Processor, HDD, RAM, Price, ImageName) 
+                              VALUES (
+                                @LaptopID, @LaptopName, @LaptopType, @ProductDate, 
+                                @Processor, @HDD, @RAM, @Price, @ImageName)";
+
+                foreach (var laptop in LtpList)
+                {
+                    using (var command = new SqlCommand(insertQuery, cnn))
+                    {
+                        command.Parameters.AddWithValue("@LaptopID", laptop.LaptopID);
+                        command.Parameters.AddWithValue("@LaptopName", laptop.LaptopName);
+                        command.Parameters.AddWithValue("@LaptopType", laptop.LaptopType);
+                        command.Parameters.AddWithValue("@ProductDate", laptop.ProductDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
+                        command.Parameters.AddWithValue("@Processor", laptop.Processor);
+                        command.Parameters.AddWithValue("@HDD", laptop.HDD);
+                        command.Parameters.AddWithValue("@RAM", laptop.RAM);
+                        command.Parameters.AddWithValue("@Price", laptop.Price);
+                        command.Parameters.AddWithValue("@ImageName", laptop.ImageName);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+
+            Console.WriteLine("Data written to SQL Server successfully!");
+        }
+
+        private void btnUpdateToDataSource_Click(object sender, EventArgs e)
+        {
+            WriteDataToExcelFile(LtpList, ExcelFilePath);
+
+            WriteDataToSQLServer(LtpList, connectionString);
+
+            MessageBox.Show("Finish update to DataSource: Excel - SQL Server");
         }
     }
 }
